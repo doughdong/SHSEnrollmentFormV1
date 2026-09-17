@@ -265,9 +265,3 @@ This project was developed as a Python programming project to demonstrate fundam
 ## License
 
 This project is intended for educational purposes.
-
-## Author
-
-**Your Name**
-
-**Your GitHub Profile**
