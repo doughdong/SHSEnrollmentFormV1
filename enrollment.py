@@ -1,6 +1,66 @@
 students = []
 
 
+def load_students():
+    try:
+        file = open("students.txt", "r")
+
+        for line in file:
+            data = line.strip().split("|")
+
+            if len(data) == 12:
+                student = {
+                    "student_id": data[0],
+                    "first_name": data[1],
+                    "middle_name": data[2],
+                    "last_name": data[3],
+                    "age": data[4],
+                    "gender": data[5],
+                    "grade_level": data[6],
+                    "track": data[7],
+                    "strand": data[8],
+                    "contact": data[9],
+                    "address": data[10],
+                    "guardian": data[11]
+                }
+
+                students.append(student)
+
+        file.close()
+
+    except FileNotFoundError:
+        file = open("students.txt", "w")
+        file.close()
+
+    except Exception as e:
+        print("Error loading students:", e)
+
+
+def save_student(student):
+    try:
+        file = open("students.txt", "a")
+
+        file.write(
+            student["student_id"] + "|" +
+            student["first_name"] + "|" +
+            student["middle_name"] + "|" +
+            student["last_name"] + "|" +
+            student["age"] + "|" +
+            student["gender"] + "|" +
+            student["grade_level"] + "|" +
+            student["track"] + "|" +
+            student["strand"] + "|" +
+            student["contact"] + "|" +
+            student["address"] + "|" +
+            student["guardian"] + "\n"
+        )
+
+        file.close()
+
+    except Exception as e:
+        print("Error saving student:", e)
+
+
 def add_student():
     print("\n===== STUDENT ENROLLMENT =====")
 
@@ -33,10 +93,16 @@ def add_student():
     while True:
         age = input("Age: ")
 
-        if age.isdigit():
-            break
+        try:
+            age_number = int(age)
 
-        print("Invalid age. Please enter a number.")
+            if age_number > 0:
+                break
+            else:
+                print("Age must be greater than 0.")
+
+        except ValueError:
+            print("Invalid age. Please enter a number.")
 
     while True:
         gender = input("Gender (Male/Female): ").lower()
@@ -99,6 +165,8 @@ def add_student():
 
     if validate_student(student):
         students.append(student)
+        save_student(student)
+
         print("\nStudent enrolled successfully!")
 
 
@@ -123,12 +191,16 @@ def choose_strand():
 
             if strand_choice == "1":
                 return track, "STEM"
+
             elif strand_choice == "2":
                 return track, "ABM"
+
             elif strand_choice == "3":
                 return track, "HUMSS"
+
             elif strand_choice == "4":
                 return track, "GAS"
+
             else:
                 print("Invalid strand. Please choose 1-4.")
 
@@ -143,8 +215,10 @@ def choose_strand():
 
             if strand_choice == "1":
                 return track, "ICT - Programming"
+
             elif strand_choice == "2":
                 return track, "ICT - CSS"
+
             else:
                 print("Invalid strand. Please choose 1-2.")
 
@@ -199,7 +273,12 @@ def view_students():
     for student in students:
         print("\n------------------------------")
         print("Student ID:", student["student_id"])
-        print("Name:", student["first_name"], student["middle_name"], student["last_name"])
+        print(
+            "Name:",
+            student["first_name"],
+            student["middle_name"],
+            student["last_name"]
+        )
         print("Age:", student["age"])
         print("Gender:", student["gender"])
         print("Grade Level:", student["grade_level"])
@@ -209,3 +288,6 @@ def view_students():
         print("Address:", student["address"])
         print("Guardian:", student["guardian"])
         print("------------------------------")
+
+
+load_students()
