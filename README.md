@@ -1,10 +1,10 @@
 # SHS Enrollment System
 
-A simple **Senior High School (SHS) Enrollment System** developed using Python. This console-based application allows users to enroll students, validate student information, select an SHS track and strand, save enrollment records, and view enrolled students.
+A simple Senior High School (SHS) Enrollment System developed using Python. This console-based application allows users to enroll students, validate student information, select an SHS track and strand, save enrollment records, and view enrolled students.
 
-## 📌 Project Description
+## Project Description
 
-The **SHS Enrollment System** is a console-based Python application designed to manage basic student enrollment information.
+The SHS Enrollment System is a console-based Python application designed to manage basic student enrollment information.
 
 The system provides a menu-driven interface that allows users to:
 
@@ -17,15 +17,13 @@ The system provides a menu-driven interface that allows users to:
 - View enrolled students
 - Exit the application
 
-The project demonstrates fundamental Python programming concepts and the use of **file handling for data persistence**.
+The project demonstrates fundamental Python programming concepts and the use of file handling for data persistence.
 
----
-
-## ✨ Features
+## Features
 
 ### 1. Student Enrollment
 
-The system collects the following information:
+The system collects the following student information:
 
 - Student ID
 - First Name
@@ -38,74 +36,51 @@ The system collects the following information:
 - Strand
 - Contact Number
 - Address
-- Guardian
-
-After the required information is entered and validated, the student record is saved to the system.
+- Guardian Name
 
 ### 2. Input Validation
 
-The system performs basic input validation to help prevent invalid or incomplete information.
+The system validates important student information before saving a record.
 
-Validation includes:
+Examples include:
 
-- Student ID cannot be empty
-- First name cannot be empty
-- Last name cannot be empty
-- Age must be a valid number greater than zero
-- Gender must be Male or Female
-- Grade level must be Grade 11 or Grade 12
-- Contact number must contain numbers only
-- Address cannot be empty
-- Guardian cannot be empty
+- Student ID cannot be empty.
+- First name and last name cannot be empty.
+- Age must be a positive integer.
+- Gender must be selected as Male or Female.
+- Grade level must be Grade 11 or Grade 12.
+- Contact number must contain digits only.
+- Address and guardian name cannot be empty.
 
-### 3. Track and Strand Selection
+### 3. SHS Tracks and Strands
 
-The system provides two available Senior High School tracks.
+The system allows users to select from the following tracks and strands:
 
-#### Academic
+#### Academic Track
 
 - STEM
 - ABM
 - HUMSS
 - GAS
 
-#### TVL
+#### TVL Track
 
 - ICT - Programming
 - ICT - CSS
 
-Users first select a track and then select the corresponding strand.
-
 ### 4. File Handling and Data Persistence
 
-The system uses a text file named:
+The system uses a text file named `students.txt` to store enrolled student records.
 
-```text
-students.txt
-```
+Each student record is saved using the pipe character (`|`) as the separator.
 
-Student records are saved to this file using file handling.
+The system can also load previously saved records when the program starts.
 
-When the program starts, previously saved student records are loaded from `students.txt`. If the file does not exist, the system automatically creates it.
-
-This allows student records to remain available even after the program has been closed.
+The `students.txt` file is excluded from GitHub using `.gitignore` to help prevent student information from being accidentally uploaded to the public repository.
 
 ### 5. View Enrolled Students
 
-The system allows users to view all enrolled student records.
-
-The displayed information includes:
-
-- Student ID
-- Name
-- Age
-- Gender
-- Grade Level
-- Track
-- Strand
-- Contact
-- Address
-- Guardian
+Users can select the View Enrolled Students option from the main menu to display all saved enrollment records.
 
 If there are no enrolled students, the system displays:
 
@@ -113,386 +88,186 @@ If there are no enrolled students, the system displays:
 No students enrolled.
 ```
 
----
+## Technologies Used
 
-## 🛠️ Technologies Used
+- Python
+- Python dictionaries
+- Lists
+- Functions
+- Conditional statements
+- Loops
+- Input validation
+- File handling
+- Text file storage
 
-| Technology | Purpose |
-|---|---|
-| Python | Main programming language |
-| Python Functions | Organize program operations |
-| Lists | Store student records during program execution |
-| Dictionaries | Store individual student information |
-| Conditional Statements | Process choices and validation |
-| Loops | Repeatedly request user input |
-| Exception Handling | Handle input and file-related errors |
-| File Handling | Save and load student records |
-| Text File | Persistent data storage |
-| Console Interface | User interaction |
-
----
-
-## 📂 Project Structure
-
-The project consists of two Python files:
+## Project Structure
 
 ```text
 SHSEnrollmentFormV1/
-│
-├── main.py
+├── .gitignore
+├── README.md
 ├── enrollment.py
-└── README.md
+└── main.py
 ```
-
-The application also uses:
-
-```text
-students.txt
-```
-
-The `students.txt` file is created automatically by the program if it does not already exist.
 
 ### `main.py`
 
-`main.py` serves as the main entry point of the application.
-
-It displays the main menu and allows the user to choose between:
-
-1. Enroll Student
-2. View Enrolled Students
-3. Exit
-
-The selected option calls the appropriate function from `enrollment.py`.
+Contains the main menu and controls the overall flow of the application.
 
 ### `enrollment.py`
 
-`enrollment.py` contains the main functionality of the enrollment system.
+Contains the student enrollment functions, input validation, SHS track and strand selection, student display, and file handling.
 
-It handles:
-
-- Loading student records
-- Saving student records
-- Adding students
-- Selecting tracks and strands
-- Validating student information
-- Viewing enrolled students
-
----
-
-## ⚙️ Requirements
-
-To run the project, you need:
+## Requirements
 
 - Python 3.x
-- A terminal or command prompt
-- The project files in the same directory
+- No external Python libraries are required.
 
-No external Python packages are required.
+## How to Run
 
----
-
-## 🚀 How to Run
-
-### 1. Clone the Repository
-
-```bash
-git clone <your-repository-url>
-```
-
-### 2. Navigate to the Project Folder
-
-```bash
-cd SHSEnrollmentFormV1
-```
-
-### 3. Run the Program
+1. Download or clone the repository.
+2. Open a terminal in the project folder.
+3. Run the following command:
 
 ```bash
 python main.py
 ```
 
-If your system uses `python3`, use:
+The program will display the main menu.
 
-```bash
-python3 main.py
-```
+## Main Menu
 
----
-
-## 🖥️ Main Menu
-
-When the program starts, the following menu is displayed:
+The application provides the following options:
 
 ```text
-==============================
-     SHS ENROLLMENT SYSTEM
-==============================
 1. Enroll Student
 2. View Enrolled Students
 3. Exit
 ```
 
-### Menu Options
+### Enroll Student
 
-| Option | Function |
-|---|---|
-| 1 | Enroll a new student |
-| 2 | View enrolled students |
-| 3 | Exit the application |
+Select option `1` to enter and save a new student's enrollment information.
 
----
+### View Enrolled Students
 
-## 📝 Enrollment Process
+Select option `2` to display the student records currently stored in the system.
 
-To enroll a student, select:
+### Exit
 
-```text
-1. Enroll Student
-```
+Select option `3` to close the application.
 
-The system will ask for the student's information.
+## Enrollment Process
 
-Example:
+The enrollment process follows these general steps:
 
 ```text
-===== STUDENT ENROLLMENT =====
-
-Student ID: 2026-001
-First Name: Juan
-Middle Name: Dela
-Last Name: Cruz
-Age: 17
-Gender: Male
-Grade Level (11/12): 11
+Start
+  |
+  v
+Main Menu
+  |
+  +--> Enroll Student
+  |       |
+  |       v
+  |   Enter Student Information
+  |       |
+  |       v
+  |   Validate Information
+  |       |
+  |       v
+  |   Select Track and Strand
+  |       |
+  |       v
+  |   Save Student Record
+  |
+  +--> View Enrolled Students
+  |
+  +--> Exit
+  |
+  v
+End
 ```
 
-The system then asks the user to select a track:
+## Program Functions
 
-```text
-===== TRACK =====
-1. Academic
-2. TVL
+### `main.py`
 
-Choose track:
-```
+- `main()` - Displays the main menu and handles the user's selected option.
 
-If Academic is selected:
+### `enrollment.py`
 
-```text
-===== ACADEMIC STRANDS =====
-1. STEM
-2. ABM
-3. HUMSS
-4. GAS
+- `load_students()` - Loads previously saved student records from `students.txt`.
+- `save_student(student)` - Saves a student record to `students.txt`.
+- `add_student()` - Collects student information, validates it, and saves the record.
+- `choose_strand()` - Allows the user to select an SHS track and strand.
+- `validate_student(student)` - Checks required student information.
+- `view_students()` - Displays enrolled student records.
 
-Choose strand:
-```
+## Python Concepts Demonstrated
 
-If TVL is selected:
+This project demonstrates the following Python concepts:
 
-```text
-===== TVL STRANDS =====
-1. ICT - Programming
-2. ICT - CSS
-
-Choose strand:
-```
-
-After all required information is successfully entered and validated, the system displays:
-
-```text
-Student enrolled successfully!
-```
-
-The student record is then saved to `students.txt`.
-
----
-
-## 💾 Data Storage
-
-Student information is stored in `students.txt`.
-
-Each student record uses a pipe (`|`) as a separator between fields.
-
-The format is:
-
-```text
-Student ID|First Name|Middle Name|Last Name|Age|Gender|Grade Level|Track|Strand|Contact|Address|Guardian
-```
-
-Example:
-
-```text
-2026-001|Juan|Dela|Cruz|17|Male|Grade 11|Academic|STEM|09123456789|Sample Address|Maria Dela Cruz
-```
-
-When the application starts, the records in `students.txt` are loaded into the program.
-
-When a new student is enrolled, the new record is added to the file.
-
----
-
-## 🔄 System Flow
-
-```text
-                    START
-                      │
-                      ▼
-             Load Student Records
-              from students.txt
-                      │
-                      ▼
-                 Main Menu
-                      │
-          ┌───────────┼───────────┐
-          │           │           │
-          ▼           ▼           ▼
-       Enroll       View         Exit
-       Student     Students
-          │           │           │
-          ▼           ▼           ▼
-    Enter Student   Display      END
-     Information    Records
-          │
-          ▼
-    Validate Input
-          │
-          ▼
-    Select Track
-     and Strand
-          │
-          ▼
-     Save Record
-          │
-          ▼
-      Main Menu
-```
-
----
-
-## 🧩 Program Functions
-
-### `load_students()`
-
-Loads previously saved student records from `students.txt`.
-
-### `save_student(student)`
-
-Saves a newly enrolled student record to `students.txt`.
-
-### `add_student()`
-
-Handles the student enrollment process and collects the required student information.
-
-### `choose_strand()`
-
-Allows the user to select an SHS track and its corresponding strand.
-
-### `validate_student(student)`
-
-Checks the required student information before the record is accepted.
-
-### `view_students()`
-
-Displays the student records currently loaded in the system.
-
----
-
-## 📚 Python Concepts Demonstrated
-
-This project demonstrates the following Python programming concepts:
-
-- Variables
-- Functions
+- Variables and data types
 - Lists
 - Dictionaries
+- Functions
+- Loops
 - Conditional statements
-- `while` loops
-- User input
-- String manipulation
-- Input validation
 - Exception handling
+- User input
+- String processing
 - File handling
-- Data persistence
-- Modular programming
+- Basic data validation
+- Modular programming using multiple Python files
 
----
+## Data Storage
 
-## 🔐 Privacy and Security Notice
-
-This project stores student information in a plain-text file.
-
-Because this repository is **public on GitHub**, do not upload real student information to the repository.
-
-Do not use real:
-
-- Student names
-- Contact numbers
-- Addresses
-- Guardian information
-- Other personally identifiable information
-
-For testing and demonstrations, use fictional data.
-
-Example:
+Student records are stored locally in:
 
 ```text
-2026-001|Juan|Dela|Cruz|17|Male|Grade 11|Academic|STEM|09123456789|Sample Address|Maria Dela Cruz
+students.txt
 ```
 
----
+The application automatically creates the file if it does not already exist.
 
-## ⚠️ Current Limitations
+Because student records may contain personal information, `students.txt` should not be uploaded to a public repository.
 
-The current version of the system is a basic console-based enrollment application.
+## Limitations
 
-It currently does not include:
+The current version is a basic console-based enrollment system. It does not include:
 
-- Graphical User Interface (GUI)
-- Database storage
-- Student search functionality
-- Student record editing
-- Student record deletion
+- A graphical user interface
+- A database management system
 - User authentication
-- Automatic Student ID generation
-- Duplicate Student ID detection
+- Student record editing or deletion
+- Advanced search functionality
+- Duplicate student ID detection
+- Encryption of stored information
 
----
-
-## 🔮 Future Improvements
+## Future Improvements
 
 Possible improvements for future versions include:
 
-- Add a graphical user interface
-- Add student search functionality
-- Add edit and delete functionality
-- Add duplicate Student ID checking
-- Implement database storage such as SQLite
-- Add administrator authentication
-- Improve input validation
-- Generate enrollment reports
-- Add data export functionality
+- Adding a graphical user interface
+- Using a database for student records
+- Adding search functionality
+- Adding edit and delete features
+- Adding duplicate student ID checking
+- Improving data validation
+- Adding user authentication
+- Improving data security
 
----
+## Project Purpose
 
-## 🎯 Project Purpose
+This project was developed as a Python programming project to demonstrate fundamental programming concepts, modular code organization, input validation, and file handling for data persistence.
 
-The purpose of this project is to apply fundamental Python programming concepts to a practical student enrollment scenario.
-
-The project demonstrates how functions, data structures, input validation, exception handling, modular programming, and file handling can be combined to create a functional console-based application.
-
----
-
-## 📄 License
+## License
 
 This project is intended for educational purposes.
 
----
-
-## 👤 Author
+## Author
 
 **Your Name**
 
-Senior High School Enrollment System
-
-GitHub: **Your GitHub Profile**
+**Your GitHub Profile**
